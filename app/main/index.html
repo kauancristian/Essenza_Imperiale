@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <title>Essenza Imperiale | Um Império Essencial</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            overflow-x: hidden;
+            height: 100%;
+            scroll-behavior: smooth;
+        }
+
+        p, li, h2 {
+            font-family: "Montserrat", sans-serif;
+        }
+
+        #sec1 {
+            background: url(assets/backgrounds/bg-sec1.jpg) no-repeat;
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        h1, .span-logo {
+            font-family: "Monsieur La Doulaise", cursive;
+        }
+
+        @media screen and (min-width: 1024px) {
+            .nav-bar::after {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 2px;
+                background-color: #E5E7EB;
+                transition: ease-in-out 0.4s;
+                transform: scaleX(0);
+            }
+
+            .nav-bar:hover::after {
+                transform: scaleX(1);
+            }
+        }
+
+        @keyframes TextEnter {
+            0%{
+                transform: translateY(10px);
+                opacity: 0;
+            }
+
+            100%{
+                transform: translateY(0px);
+                opacity: 1;
+            }
+        }
+
+        #TextEnter{
+            animation: TextEnter 0.9s ease-in-out;
+        }
+
+        @keyframes rotateMin {
+            0%{
+                transform: rotate(0deg);
+            }
+
+            50%{
+                transform: rotate(-30deg);
+            }
+
+            100%{
+                transform: rotate(0deg);
+            }
+        }
+
+        .present-icon{
+            animation: rotateMin 1.2s ease-in-out infinite;
+        }
+
+        .present-icon1{
+            animation: rotateMin 1.2s ease-in-out 0.3s infinite;
+        }
+
+        .present-icon2{
+            animation: rotateMin 1.2s ease-in-out 0.6s infinite;
+        }
+
+        .present-icon3{
+            animation: rotateMin 1.2s ease-in-out 0.9s infinite;
+        }
+
+        .present-icon4{
+            animation: rotateMin 1.2s ease-in-out 1.2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div id="sec1">
+        <!-- Sombra -->
+        <div class="absolute inset-0 bg-black/50 min-h-screen z-[1]"></div>
+
+        <!-- Header fixado no topo -->
+        <header class="fixed w-full h-[65px] bg-black/90 z-[9999] lg:flex items-center justify-between">
+
+            <!-- MenuButtomMobile -->
+            <div class="flex justify-end lg:hidden">
+                <i id="btnMenu" class="bi bi-list absolute text-white cursor-pointer text-2xl p-4"></i>
+            </div>
+
+            <span id="spanEsp" class="text-gray-100 text-2xl lg:text-4xl translate-x-7 lg:translate-x-16 translate-y-4 lg:translate-y-0 absolute lg:relative span-logo">Essenza Imperiale</span>
+
+            <!-- DivMenu -->
+            <div id="DivMenu" class="flex lg:justify-end hidden lg:block translate-x-[-70%] lg:translate-x-0 transition ease-in-out duration-250">
+                <!-- Navegação -->
+                <nav class="lg:block bg-black/90 p-5 lg:p-0 space-x-3 lg:bg-transparent w-[70%] lg:w-[100%] h-screen lg:h-full z-[9999] relative">
+                
+                    <!-- ButtomFechamento -->
+                    <div class="flex justify-end lg:hidden">
+                        <i id="BtnFechar" class="bi bi-x-lg text-white absolute cursor-pointer"></i>
+                    </div>
+
+                    <h2 class="lg:hidden pb-5">
+                        <span class="span-logo text-white p-2 text-xl">Essenza Imperiale</span>
+                    </h2>
+
+                    <ul class="lg:flex text-white text-sm lg:space-x-5 transform lg:translate-x-[-50px] space-y-5 lg:space-y-0 text-xl lg:text-sm">
+                        <li><a href="#sec1" class="hover:text-gray-200 transition ease-in-out duration-300 cursor-pointer nav-bar">Início</a></li>
+                        <li><a href="#maisvendidos" class="hover:text-gray-200 transition ease-in-out duration-300 cursor-pointer nav-bar">Mais Vendidos</a></li>
+                        <li><a href="#presentear" class="hover:text-gray-200 transition ease-in-out duration-300 cursor-pointer nav-bar">Para Presentear</a></li>
+                        <li><a href="#lancamentos" class="hover:text-gray-200 transition ease-in-out duration-300 cursor-pointer nav-bar">Lançamentos</a></li>
+                        <li><a href="#" class="hover:text-gray-200 transition ease-in-out duration-300 cursor-pointer nav-bar">Sobre</a></li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <script>
+                const btnMenu = document.getElementById('btnMenu');
+                const Menu = document.getElementById('DivMenu');
+                const BtnFechar = document.getElementById('BtnFechar');
+
+                btnMenu.onclick = () => {
+                    Menu.style.display = 'block'
+
+                    setTimeout(() => {
+                        Menu.style.transform = 'translateX(0%)'
+                    }, 100)
+                };
+
+                BtnFechar.onclick = () => {
+
+                    Menu.style.transform = 'translateX(-100%)'
+                    
+                    setTimeout(() =>{
+                        Menu.style.display = 'none'
+                    },500)
+                };
+            </script>
+        </header>
+
+        <!-- Conteúdo principal -->
+        <div id="TextEnter" class="pt-[80px] flex flex-col items-center text-center justify-center z-50 relative min-h-screen">
+            <h1 class="text-gray-100 text-5xl lg:text-8xl">Elegância Pura</h1>
+            <p class="text-sm w-[80%] lg:w-[500px] text-gray-200 pt-5">
+                Cada joia é cuidadosamente desenhada para refletir a identidade única de quem a usa, combinando design refinado, materiais nobres e um toque de realeza. Na Essenza Imperiale, acreditamos que o verdadeiro luxo está nos detalhes e na experiência.
+            </p>
+            <div class="space-x-5 flex pt-8">
+                <button class="bg-gray-100 py-2 px-6 rounded-full flex space-x-3 hover:bg-gray-300 transition ease-in-out duration-700 items-center cursor-pointer">
+                    <p>Ver Joias</p>
+                    <i class="bi bi-gem"></i>
+                </button>
+                <button class="flex border border-gray-100 py-2 px-6 rounded-full flex space-x-3 text-white items-center hover:bg-gray-100 hover:text-black transition ease-in-out duration-700 cursor-pointer">
+                    <p>Sobre Nós</p>
+                    <i class="bi bi-info-circle"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="maisvendidos" class="bg-black">
+            <div class="flex flex-col items-center lg:items-start lg:px-10">
+                <h2 id="h2Esp" class="text-white text-4xl font-bold text-center lg:text-start pb-7 lg:pb-0 pt-12">MAIS VENDIDOS</h2>
+                <span class="block bg-white w-[100px] h-0.5 translate-y-[-20px] lg:translate-y-0"></span>
+            </div>
+            <div>
+                <ul class="flex justify-center text-gray-100 space-x-5 pb-10">
+                    <li class="cursor-pointer">Anéis</li>
+                    <li class="cursor-pointer">Colares</li>
+                    <li class="cursor-pointer">Pulseiras</li>
+                    <li class="cursor-pointer">Brincos</li>
+                </ul>
+            </div>
+            <!-- Itens -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 flex justify-center gap-10 lg:gap-0">
+                <div class="bg-gray-100 rounded-lg overflow-hidden w-[90%] lg:w-72 mx-auto mb-10 anel">
+                    <div class="bg-gray-300 shadow-md group flex justify-center">
+                        <img class="object-contain group-hover:scale-125 transition ease-in-out duration-700" src="assets/itens/aneis/anel1.png" alt="">
+                    </div>
+                    <div class="p-4">
+                        <div>
+                            <p class="font-semibold text-gray-800">Bvlgari - Anel B.Zero1</p>
+                            <p class="pt-3"> Audacioso, perfeito pra quem quer algo exclusivo e com estilo arquitetônico.</p>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-xl font-bold pt-3">R$ 12.000</p>
+                                <p class="line-through">R$ 14.000</p>
+                            </div>
+                            <div>
+                                <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4">
+                                    <p>COMPRE JÁ</p>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-lg overflow-hidden w-[90%] lg:w-72 mx-auto mb-10 colar">
+                    <div class="bg-gray-300 shadow-md group flex justify-center">
+                        <img class="object-contain group-hover:scale-125 transition ease-in-out duration-700" src="assets/itens/colares/colar-coração-dourado.png" alt="">
+                    </div>
+                    <div class="p-4">
+                        <div>
+                            <p class="font-semibold text-gray-800">Chopard - Colar Happy Hearts</p>
+                            <p class="pt-3">Romântico e luxuoso ao mesmo tempo. Os diamantes dançam, literalmente.</p>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-xl font-bold pt-3">R$ 13.000</p>
+                                <p class="line-through">R$ 16.000</p>
+                            </div>
+                            <div>
+                                <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4">
+                                    <p>COMPRE JÁ</p>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-lg overflow-hidden w-[90%] lg:w-72 mx-auto mb-10 anel">
+                    <div class="bg-gray-300 shadow-md group flex justify-center">
+                        <img class="object-contain group-hover:scale-125 transition ease-in-out duration-700" src="assets/itens/aneis/anel-dourado.png" alt="">
+                    </div>
+                    <div class="p-4">
+                        <div>
+                            <p class="font-semibold text-gray-800">Cartier - Anel Love</p>
+                            <p class="pt-3">Ícone de elegância atemporal, para quem quer marcar presença com classe.</p>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-xl font-bold pt-3">R$ 11.400</p>
+                                <p class="line-through">R$ 13.750</p>
+                            </div>
+                            <div>
+                                <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4">
+                                    <p>COMPRE JÁ</p>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-lg overflow-hidden w-[90%] lg:w-72 mx-auto mb-10 colar">
+                    <div class="bg-gray-300 shadow-md group flex justify-center">
+                        <img class="object-contain group-hover:scale-125 transition ease-in-out duration-700" src="assets/itens/colares/colar-prata.png" alt="">
+                    </div>
+                    <div class="p-4">
+                        <div>
+                            <p class="font-semibold text-gray-800">Cartier - Colar Juste un Clou</p>
+                            <p class="pt-3">Um prego virou joia — ousado, moderno e absurdamente elegante.</p>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-xl font-bold pt-3">R$ 13.500</p>
+                                <p class="line-through">R$ 18.000</p>
+                            </div>
+                            <div>
+                                <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4">
+                                    <p>COMPRE JÁ</p>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="bg-gray-100 rounded-lg overflow-hidden w-[90%] lg:w-72 mx-auto mb-10 pulseira">
+                    <div class="bg-gray-300 shadow-md group flex justify-center">
+                        <img class="object-contain group-hover:scale-125 transition ease-in-out duration-700" src="assets/itens/pulseiras/pulseira.png" alt="">
+                    </div>
+                    <div class="p-4">
+                        <div>
+                            <p class="font-semibold text-gray-800">Bvlgari – Pulseira Serpenti Viper</p>
+                            <p class="pt-3">Envolve o pulso como uma serpente — design sofisticado e poderoso.</p>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-xl font-bold pt-3">R$ 42.500</p>
+                                <p class="line-through">R$ 49.000</p>
+                            </div>
+                            <div>
+                                <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4">
+                                    <p>COMPRE JÁ</p>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-lg overflow-hidden w-[90%] lg:w-72 mx-auto mb-10 brinco">
+                    <div class="bg-gray-300 shadow-md group flex justify-center">
+                        <img class="object-contain group-hover:scale-125 transition ease-in-out duration-700" src="assets/itens/brincos/brinco-diamante.png" alt="">
+                    </div>
+                    <div class="p-4">
+                        <div>
+                            <p class="font-semibold text-gray-800">Cartier - Brinco Clash de Cartier</p>
+                            <p class="pt-3">Combina atitude e elegância — design com spikes, mas ultra fino.</p>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-xl font-bold pt-3">R$ 18.000</p>
+                                <p class="line-through">R$ 21.000</p>
+                            </div>
+                            <div>
+                                <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4">
+                                    <p>COMPRE JÁ</p>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-lg overflow-hidden w-[90%] lg:w-72 mx-auto mb-10 colar">
+                    <div class="bg-gray-300 shadow-md group flex justify-center">
+                        <img class="object-contain group-hover:scale-110 transition ease-in-out duration-700" src="assets/itens/colares/colar-esmeralda.png" alt="">
+                    </div>
+                    <div class="p-4">
+                        <div>
+                            <p class="font-semibold text-gray-800">Bvlgari - Colar Divas’ Dream</p>
+                            <p class="pt-3">Inspirado nos mosaicos romanos — um luxo clássico com um toque de arte.</p>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-xl font-bold pt-3">R$ 18.000</p>
+                                <p class="line-through">R$ 27.500</p>
+                            </div>
+                            <div>
+                                <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4">
+                                    <p>COMPRE JÁ</p>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-lg overflow-hidden w-[90%] lg:w-72 mx-auto mb-10 anel">
+                    <div class="bg-gray-300 shadow-md group flex justify-center">
+                        <img class="object-contain group-hover:scale-125 transition ease-in-out duration-700" src="assets/itens/aneis/anel-diamante.png" alt="">
+                    </div>
+                    <div class="p-4">
+                        <div>
+                            <p class="font-semibold text-gray-800">Chopard - Anel Happy Diamonds Icons</p>
+                            <p class="pt-3"> Puro glamour, os diamantes se movem dentro do anel.</p>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-xl font-bold pt-3">R$ 15.000</p>
+                                <p class="line-through">R$ 16.500</p>
+                            </div>
+                            <div>
+                                <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4">
+                                    <p>COMPRE JÁ</p>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <div id="presentear" class="bg-gray-200 pb-10">
+        <div class="flex items-center space-x-6 lg:space-x-0 pt-12 pb-7 text-center lg:text-start flex justify-center lg:justify-start">
+            <div class="flex flex-col lg:px-10">
+                <h2 class="text-black text-2xl lg:text-4xl font-bold text-center lg:text-start">PARA PRESENTEAR</h2>
+                <span class="block bg-black w-[100px] h-0.5"></span>
+            </div>
+            <i class="bi bi-gift text-black text-6xl present-icon"></i>
+        </div>
+    
+        <div class="grid lg:grid-cols-2">
+            <div class="flex justify-center items-center max-w-[80%] overflow-hidden lg:max-w-[100%] mx-auto relative">
+                <button id="btnLeft" class="bg-black text-white w-10 h-10 rounded-full hover:bg-black/80 transition ease-in-out duration-300 absolute left-0 z-50"><i class="bi bi-chevron-left text-white"></i></button>
+                <div class="carousel-container w-full overflow-hidden relative">
+                    <div class="carousel flex">
+                        <img class="carousel-item flex-shrink-0 w-full object-contain active" src="assets/itens/presentes/anel-presente.png" alt="Anel Luce Eterna">
+                        <img class="carousel-item flex-shrink-0 w-full object-contain" src="assets/itens/presentes/gargantilha-presente.png" alt="Gargantilha Amore Infinito">
+                        <img class="carousel-item flex-shrink-0 w-full object-contain" src="assets/itens/presentes/Brinco-Life-Petit-Coracao-Prata-Cravejado-90530_1_set-removebg-preview.png" alt="Brinco Petit Coração">
+                    </div>
+                </div>
+                <button id="btnRight" class="bg-black text-white w-10 h-10 rounded-full hover:bg-black/80 transition ease-in-out duration-300 absolute right-0 z-50"><i class="bi bi-chevron-right text-white"></i></button>
+            </div>
+    
+            <div class="flex flex-col px-3 pt-14 lg:pt-0">
+                <div class="bg-black w-[50%] lg:w-[20%] text-center rounded-full">
+                    <h2 class="text-white py-2 px-4">NOVIDADE!</h2>
+                </div>
+                <h2 id="text-name-present" class="text-4xl lg:text-6xl font-semibold pt-5 transition-opacity duration-500">Luce Eterna</h2>
+                <p id="p-legenda" class="pt-5 transition-opacity duration-500">Um símbolo de elegância atemporal. O anel Luce Eterna foi criado para eternizar momentos únicos, com um brilho que reflete promessas duradouras e a luz de quem o usa.</p>
+                <p class="pt-3">Preço:</p>
+                <p id="p-preço" class="text-2xl font-bold pt-1 transition-opacity duration-500">R$ 8.900,00</p>
+                <p id="p-preçoReal" class="line-through transition-opacity duration-500">R$ 10.500,00</p>
+    
+                <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4 w-[50%] lg:w-[30%] mt-5">
+                    <p>COMPRE JÁ</p>
+                </button>
+    
+                <p class="text-sm pt-5">Presenteie com Essenza Imperiale — porque momentos especiais merecem ser eternizados em joias inesquecíveis.</p>
+            </div>
+        </div>
+    
+        <style>
+            .carousel-container {
+                position: relative;
+                width: 100%;
+                overflow: hidden;
+            }
+    
+            .carousel {
+                display: flex;
+                position: relative;
+            }
+    
+            .carousel-item {
+                flex-shrink: 0;
+                width: 100%;
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                left: 0;
+                transition: opacity 0.5s ease-in-out;
+            }
+    
+            .carousel-item.active {
+                opacity: 1;
+                position: relative;
+            }
+    
+            #text-name-present, #p-legenda, #p-preço, #p-preçoReal {
+                opacity: 1;
+            }
+    
+            .fade-out {
+                opacity: 0;
+            }
+    
+            .carousel-button {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(0, 0, 0, 0.7);
+                color: white;
+                border: none;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: background 0.3s ease;
+            }
+    
+            .carousel-button:hover {
+                background: rgba(0, 0, 0, 0.9);
+            }
+        </style>
+    
+        <script>
+            const carousel = document.querySelector('.carousel');
+            const items = document.querySelectorAll('.carousel-item');
+            const btnLeft = document.getElementById('btnLeft');
+            const btnRight = document.getElementById('btnRight');
+            const textName = document.getElementById('text-name-present');
+            const legenda = document.getElementById('p-legenda');
+            const preco = document.getElementById('p-preço');
+            const precoReal = document.getElementById('p-preçoReal');
+    
+            const carouselData = [
+                {
+                    name: 'Luce Eterna',
+                    legenda: 'Um símbolo de elegância atemporal. O anel Luce Eterna foi criado para eternizar momentos únicos, com um brilho que reflete promessas duradouras e a luz de quem o usa.',
+                    preco: 'R$ 8.900,00',
+                    precoReal: 'R$ 10.500,00'
+                },
+                {
+                    name: 'Amore Infinito',
+                    legenda: 'Uma gargantilha que celebra o amor eterno, com design delicado e sofisticado, perfeita para presentear quem você ama.',
+                    preco: 'R$ 9.500,00',
+                    precoReal: 'R$ 11.200,00'
+                },
+                {
+                    name: 'Petit Coração',
+                    legenda: 'Brincos delicados com detalhes cravejados, ideais para adicionar um toque de charme e elegância a qualquer ocasião.',
+                    preco: 'R$ 7.200,00',
+                    precoReal: 'R$ 8.900,00'
+                }
+            ];
+    
+            let currentIndex = 0;
+            let isAnimating = false;
+    
+            function updateCarousel() {
+                if (isAnimating) return;
+                isAnimating = true;
+    
+               
+                textName.classList.add('fade-out');
+                legenda.classList.add('fade-out');
+                preco.classList.add('fade-out');
+                precoReal.classList.add('fade-out');
+    
+                setTimeout(() => {
+                    
+                    textName.textContent = carouselData[currentIndex].name;
+                    legenda.textContent = carouselData[currentIndex].legenda;
+                    preco.textContent = carouselData[currentIndex].preco;
+                    precoReal.textContent = carouselData[currentIndex].precoReal;
+    
+                   
+                    textName.classList.remove('fade-out');
+                    legenda.classList.remove('fade-out');
+                    preco.classList.remove('fade-out');
+                    precoReal.classList.remove('fade-out');
+                }, 250); 
+    
+                
+                items.forEach((item, index) => {
+                    item.classList.toggle('active', index === currentIndex);
+                });
+    
+                setTimeout(() => {
+                    isAnimating = false;
+                }, 500); 
+            }
+    
+            btnRight.addEventListener('click', () => {
+                if (!isAnimating) {
+                    currentIndex = (currentIndex + 1) % items.length;
+                    updateCarousel();
+                }
+            });
+    
+            btnLeft.addEventListener('click', () => {
+                if (!isAnimating) {
+                    currentIndex = (currentIndex - 1 + items.length) % items.length;
+                    updateCarousel();
+                }
+            });
+    
+            
+            updateCarousel();
+        </script>
+    </div>
+
+    <!-- Bônus -->
+    <div>
+        <div class="grid lg:grid-cols-2">
+            <div class="bg-black text-white lg:p-10 w-[100%] text-center lg:text-start pt-7">
+                <p class="text-2xl lg:text-3xl font-semibold px-2 lg:px-0">SEU LUXO, SEU RETORNO - ESSENZA IMPERIALE</p>
+                <p class="pt-5 px-4 lg:px-0">
+                    Presenteie com elegância e receba exclusividade.
+                    Cada compra que você realiza em nossa loja retorna em forma de benefício: você recebe 15% do valor investido de volta em créditos exclusivos, prontos para serem utilizados em sua próxima aquisição. <br> <br> Mais do que presentear com elegância, você continua colhendo os frutos do seu bom gosto.
+                </p>
+
+                <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4 w-[50%] lg:w-[30%] mt-7 mb-10 lg:mb-0">
+                    <p>IR AGORA</p>
+                </button>
+            </div>
+            <div class="hidden lg:block w-full">
+                <img class="object-cover w-[100%]" src="assets/itens/anel-de-formatura-feminino.webp" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div id="lancamentos" class="bg-gray-800 pb-14">
+        <div class="pt-12 pb-7 text-center lg:px-10 flex flex-col items-center lg:items-start">
+            <h2 class="text-white text-3xl lg:text-4xl font-bold text-center lg:text-start">LANÇAMENTOS</h2>
+            <span class="block bg-white w-[100px] h-0.5 translate-y-1"></span>
+        </div>
+
+        <div class="grid lg:grid-cols-3 pt-10 gap-20 lg:gap-0">
+            <div id="lanc-1" class="bg-gray-200 flex flex-col items-center mx-auto text-center rounded-lg cursor-pointer h-80 w-80 relative overflow-hidden">
+                <div class="relative w-full h-full">
+                  <div id="shadow1" class="absolute inset-0 bg-black opacity-30 z-10 hidden transition-opacity duration-500"></div>
+                  <img id="img-joia1" class="object-cover w-full h-full z-0 transition-transform duration-500" src="assets/itens/lançamentos/joia-1.png" alt="">
+                  <div id="div-inf-lanc1" class="hidden">
+                    <h2 class="absolute bottom-40 left-0 right-0 text-center z-20 text-white font-light text-lg md:text-2xl transition-opacity duration-500">Anel da Aurora Imperial</h2>
+                    <p class="absolute bottom-[130px] left-0 right-0 text-center z-20 text-white font-light text-lg transition-opacity duration-500">Elegância, Poder, Sofisticação</p>
+                    <button class="absolute bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4 bottom-12 left-0 right-0 text-center z-20 w-[60%] mx-auto">
+                      <p>COMPRE JÁ</p>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              
+              <div id="lanc-2" class="bg-gray-200 flex flex-col items-center mx-auto text-center rounded-lg cursor-pointer h-80 w-80 relative overflow-hidden">
+                <div class="relative w-full h-full">
+                  <div id="shadow2" class="absolute inset-0 bg-black opacity-30 z-10 hidden transition-opacity duration-500"></div>
+                  <img id="img-joia2" class="object-cover w-full h-full z-0 transition-transform duration-500" src="assets/itens/lançamentos/joia-2.png" alt="">
+                  <div id="div-inf-lanc2" class="hidden">
+                    <h2 class="absolute bottom-40 left-0 right-0 text-center z-20 text-white font-light text-lg md:text-2xl transition-opacity duration-500">Pulseira Esplendor Real</h2>
+                    <p class="absolute bottom-[130px] left-0 right-0 text-center z-20 text-white font-light text-lg transition-opacity duration-500">Luxo, Grandeza, Exclusividade</p>
+                    <button class="absolute bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4 bottom-12 left-0 right-0 text-center z-20 w-[60%] mx-auto">
+                      <p>COMPRE JÁ</p>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              
+              <div id="lanc-3" class="bg-gray-200 flex flex-col items-center mx-auto text-center rounded-lg cursor-pointer h-80 w-80 relative overflow-hidden">
+                <div class="relative w-full h-full">
+                  <div id="shadow3" class="absolute inset-0 bg-black opacity-30 z-10 hidden transition-opacity duration-500"></div>
+                  <img id="img-joia3" class="object-cover w-full h-full z-0 transition-transform duration-500" src="assets/itens/lançamentos/joia-3.png" alt="">
+                  <div id="div-inf-lanc3" class="hidden">
+                    <h2 class="absolute bottom-40 left-0 right-0 text-center z-20 text-white font-light text-lg md:text-2xl transition-opacity duration-500">Anel Celestial de Opala</h2>
+                    <p class="absolute bottom-[130px] left-0 right-0 text-center z-20 text-white font-light text-lg transition-opacity duration-500">Mistério, Brilho, Eternidade</p>
+                    <button class="absolute bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4 bottom-12 left-0 right-0 text-center z-20 w-[60%] mx-auto">
+                      <p>COMPRE JÁ</p>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              
+              <script>
+                const cards = [
+                  {
+                    lanc: document.getElementById('lanc-1'),
+                    img: document.getElementById('img-joia1'),
+                    shadow: document.getElementById('shadow1'),
+                    divInfo: document.getElementById('div-inf-lanc1'),
+                    srcHover: 'assets/itens/lançamentos/mulher-joia-1.png',
+                    srcDefault: 'assets/itens/lançamentos/joia-1.png'
+                  },
+                  {
+                    lanc: document.getElementById('lanc-2'),
+                    img: document.getElementById('img-joia2'),
+                    shadow: document.getElementById('shadow2'),
+                    divInfo: document.getElementById('div-inf-lanc2'),
+                    srcHover: 'assets/itens/lançamentos/mulher-joia-2.png',
+                    srcDefault: 'assets/itens/lançamentos/joia-2.png'
+                  },
+                  {
+                    lanc: document.getElementById('lanc-3'),
+                    img: document.getElementById('img-joia3'),
+                    shadow: document.getElementById('shadow3'),
+                    divInfo: document.getElementById('div-inf-lanc3'),
+                    srcHover: 'assets/itens/lançamentos/mulher-joia-3.png',
+                    srcDefault: 'assets/itens/lançamentos/joia-3.png'
+                  }
+                ];
+              
+                cards.forEach(card => {
+                  card.lanc.addEventListener('mouseover', () => {
+                    card.img.src = card.srcHover;
+                    card.img.classList.add('scale-110');
+                    card.shadow.classList.remove('hidden');
+                    card.divInfo.classList.remove('hidden');  // Mostrar a div com a descrição
+                  });
+              
+                  card.lanc.addEventListener('mouseout', () => {
+                    card.img.src = card.srcDefault;
+                    card.img.classList.remove('scale-110');
+                    card.shadow.classList.add('hidden');
+                    card.divInfo.classList.add('hidden');  // Esconder a div com a descrição
+                  });
+                });
+              </script>
+        </div>
+    </div>
+
+    <div class="bg-black pb-10">
+        <div class="flex flex-col items-center lg:items-start lg:px-20">
+            <h2 id="h2Esp" class="text-white text-4xl font-bold text-center lg:text-start pb-7 lg:pb-0 pt-12">SOBRE NÓS</h2>
+            <span class="block bg-white w-[100px] h-0.5 translate-y-[-20px] lg:translate-y-0"></span>
+        </div>
+        <div class="text-white px-10 lg:px-20 pt-5 text-lg">
+            <p>
+                Na Essenza Imperiale, acreditamos que cada mulher carrega uma realeza interior — e nossas joias foram criadas para revelá-la. Somos uma marca de joias de luxo que une arte, tradição e inovação para criar peças exclusivas, sofisticadas e atemporais.
+            </p>
+            <p class="pt-5">
+                Mais do que adornos, entregamos experiências. Porque para nós, luxo é carregar no corpo aquilo que expressa quem você é.
+            </p>
+            <p class="pt-5">
+                Nossa missão é transformar sentimentos em joias, eternizando momentos com elegância e significado. Valorizamos o brilho autêntico, a força feminina e o detalhe que faz toda diferença. Cada criação reflete o cuidado com o design, os materiais preciosos e a paixão pela beleza.
+            </p>
+        </div>
+    </div>
+    <footer>
+
+    </footer>
+</body>
+</html>
