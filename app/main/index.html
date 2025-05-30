@@ -1,9 +1,8 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <title>Essenza Imperiale | Um Império Essencial</title>
@@ -11,13 +10,13 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+        
 
         body, html {
             overflow-x: hidden;
@@ -73,39 +72,20 @@
             animation: TextEnter 0.9s ease-in-out;
         }
 
-        @keyframes rotateMin {
+        @keyframes ArrowMovie {
             0%{
-                transform: rotate(0deg);
+                transform: translateX(8px);
             }
 
             50%{
-                transform: rotate(-30deg);
+                transform: translateX(0px);
             }
 
             100%{
-                transform: rotate(0deg);
+                transform: translateX(8px);
             }
         }
-
-        .present-icon{
-            animation: rotateMin 1.2s ease-in-out infinite;
-        }
-
-        .present-icon1{
-            animation: rotateMin 1.2s ease-in-out 0.3s infinite;
-        }
-
-        .present-icon2{
-            animation: rotateMin 1.2s ease-in-out 0.6s infinite;
-        }
-
-        .present-icon3{
-            animation: rotateMin 1.2s ease-in-out 0.9s infinite;
-        }
-
-        .present-icon4{
-            animation: rotateMin 1.2s ease-in-out 1.2s infinite;
-        }
+        
     </style>
 </head>
 <body>
@@ -121,7 +101,7 @@
                 <i id="btnMenu" class="bi bi-list absolute text-white cursor-pointer text-2xl p-4"></i>
             </div>
 
-            <span id="spanEsp" class="text-gray-100 text-2xl lg:text-4xl translate-x-7 lg:translate-x-16 translate-y-4 lg:translate-y-0 absolute lg:relative span-logo">Essenza Imperiale</span>
+            <span id="spanEsp" class="text-gray-100 text-2xl lg:text-4xl translate-x-7 lg:translate-x-16 pt-4 lg:pt-0 lg:translate-y-0 absolute lg:relative span-logo hover:translate-y-[-3px] transition ease-in-out duration-300 cursor-pointer">Essenza Imperiale</span>
 
             <!-- DivMenu -->
             <div id="DivMenu" class="flex lg:justify-end hidden lg:block translate-x-[-70%] lg:translate-x-0 transition ease-in-out duration-250">
@@ -137,12 +117,20 @@
                         <span class="span-logo text-white p-2 text-xl">Essenza Imperiale</span>
                     </h2>
 
-                    <ul class="lg:flex text-white text-sm lg:space-x-5 transform lg:translate-x-[-50px] space-y-5 lg:space-y-0 text-xl lg:text-sm">
+                    <ul class="lg:flex text-white text-sm lg:space-x-5 transform lg:translate-x-[-100px] space-y-5 lg:space-y-0 text-xl lg:text-sm">
                         <li><a href="#sec1" class="hover:text-gray-200 transition ease-in-out duration-300 cursor-pointer nav-bar">Início</a></li>
                         <li><a href="#maisvendidos" class="hover:text-gray-200 transition ease-in-out duration-300 cursor-pointer nav-bar">Mais Vendidos</a></li>
                         <li><a href="#presentear" class="hover:text-gray-200 transition ease-in-out duration-300 cursor-pointer nav-bar">Para Presentear</a></li>
                         <li><a href="#lancamentos" class="hover:text-gray-200 transition ease-in-out duration-300 cursor-pointer nav-bar">Lançamentos</a></li>
                         <li><a href="#" class="hover:text-gray-200 transition ease-in-out duration-300 cursor-pointer nav-bar">Sobre</a></li>
+                        <!-- Carrinho -->
+                        <li id="itensShop" class="flex items-center space-x-2 cursor-pointer">
+                            <i class="bi bi-bag cursor-pointer text-white text-xl relative lg:absolute lg:translate-y-[-2px] hover:scale-105 transition ease-in-out duration-300 hover:text-gray-400"></i>
+                            <span id="spanContador" class="block w-4 h-4 bg-white rounded-full absolute transform translate-y-[-9px] translate-x-1 text-sm items-center hidden">
+                                <p id="contadorItens" class="text-black absolute translate-x-[4px] translate-y-[-1px]"></p>
+                            </span>
+                            <p class="lg:hidden">Meus Itens</p>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -171,6 +159,54 @@
             </script>
         </header>
 
+        <!-- Modal -->
+        <div class="bg-black opacity-50 indent-0 m-auto absolute"></div>
+        <div id="divShop" class="bg-[#121212] fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 m-auto z-[9999] w-[85%] lg:w-[700px] border border-gray-800 shadow-xl rounded-md px-6 lg:px-9 text-white pb-6 hidden">
+            <div class="pt-8 flex justify-between items-center">
+                <p class="font-bold text-2xl">Seu Carrinho</p>
+                <i id="btnX" class="bi bi-x-lg text-xl cursor-pointer"></i>
+            </div>
+
+            <div id="itensAdicionados">
+                <!-- !! -->
+            </div>
+
+
+            <div class="block h-0.5 w-[100%] bg-gray-700 mx-auto mt-7"></div>
+            <div class="pt-3 space-y-4">
+                <p>Subtotal:</p>
+
+                <p>Frete:</p>
+                
+                <p class="text-xl">Total:</p>
+            </div>
+            <div class="text-white text-lg pt-5 space-y-3 sm:space-y-0 sm:space-x-3 flex sm:flex-row flex-col items-center">
+                <button id="ctnComprar" class="py-2 px-5 border rounded-md hover:bg-gray-700  transition ease-in-out duration-300 hover:scale-105">Continuar Comprando</button>
+                <a href="views/finalizarCompra.html"><button id="" class="py-2 px-10 lg:px-5 bg-white text-black font-semibold rounded-md hover:bg-gray-500 transition ease-in-out duration-300 hover:scale-105">Finalizar Compra</button></a>
+            </div>
+        </div>
+
+
+        <script>
+            const itensShop = document.getElementById('itensShop');
+            const divShop = document.getElementById('divShop');
+            const btnX = document.getElementById('btnX');
+            const ctnComprar = document.getElementById('ctnComprar');
+
+            itensShop.onclick = () => {
+                divShop.style.display = 'block';
+            };
+
+            btnX.onclick = () => {
+                divShop.style.display = 'none';
+            };
+
+            ctnComprar.onclick = () => {
+                divShop.style.display = 'none';
+            }
+
+        </script>
+
         <!-- Conteúdo principal -->
         <div id="TextEnter" class="pt-[80px] flex flex-col items-center text-center justify-center z-50 relative min-h-screen">
             <h1 class="text-gray-100 text-5xl lg:text-8xl">Elegância Pura</h1>
@@ -178,33 +214,39 @@
                 Cada joia é cuidadosamente desenhada para refletir a identidade única de quem a usa, combinando design refinado, materiais nobres e um toque de realeza. Na Essenza Imperiale, acreditamos que o verdadeiro luxo está nos detalhes e na experiência.
             </p>
             <div class="space-x-5 flex pt-8">
-                <button class="bg-gray-100 py-2 px-6 rounded-full flex space-x-3 hover:bg-gray-300 transition ease-in-out duration-700 items-center cursor-pointer">
-                    <p>Ver Joias</p>
-                    <i class="bi bi-gem"></i>
-                </button>
-                <button class="flex border border-gray-100 py-2 px-6 rounded-full flex space-x-3 text-white items-center hover:bg-gray-100 hover:text-black transition ease-in-out duration-700 cursor-pointer">
-                    <p>Sobre Nós</p>
-                    <i class="bi bi-info-circle"></i>
-                </button>
+                <a href="#maisvendidos">
+                    <button class="bg-gray-100 py-2 px-6 rounded-full flex space-x-3 hover:bg-gray-300 transition ease-in-out duration-700 items-center cursor-pointer">
+                        <p>Ver Joias</p>
+                        <i class="bi bi-gem"></i>
+                    </button>
+                </a>
+                <a href="#sobrenos">
+                    <button class="flex border border-gray-100 py-2 px-6 rounded-full flex space-x-3 text-white items-center hover:bg-gray-100 hover:text-black transition ease-in-out duration-700 cursor-pointer">
+                        <p>Sobre Nós</p>
+                        <i class="bi bi-info-circle"></i>
+                    </button>
+                </a>
             </div>
         </div>
     </div>
 
-    <div id="maisvendidos" class="bg-black">
+    <div id="maisvendidos" class="bg-black pb-10">
             <div class="flex flex-col items-center lg:items-start lg:px-10">
                 <h2 id="h2Esp" class="text-white text-4xl font-bold text-center lg:text-start pb-7 lg:pb-0 pt-12">MAIS VENDIDOS</h2>
                 <span class="block bg-white w-[100px] h-0.5 translate-y-[-20px] lg:translate-y-0"></span>
             </div>
-            <div>
-                <ul class="flex justify-center text-gray-100 space-x-5 pb-10">
-                    <li class="cursor-pointer">Anéis</li>
-                    <li class="cursor-pointer">Colares</li>
-                    <li class="cursor-pointer">Pulseiras</li>
-                    <li class="cursor-pointer">Brincos</li>
-                </ul>
+
+            <div class="flex justify-end translate-y-7">
+                <a href="views/maisItens.html">
+                    <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4 text-xl translate-x-[-20px] lg:translate-x-[-30px] border items-center space-x-3 flex">
+                        <p>VER TODOS</p>
+                        <i id="arrow" class="bi bi-arrow-right text-white"></i>
+                    </button>
+                </a>
             </div>
+
             <!-- Itens -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 flex justify-center gap-10 lg:gap-0">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 flex justify-center gap-10 lg:gap-0 pt-16">
                 <div class="bg-gray-100 rounded-lg overflow-hidden w-[90%] lg:w-72 mx-auto mb-10 anel">
                     <div class="bg-gray-300 shadow-md group flex justify-center">
                         <img class="object-contain group-hover:scale-125 transition ease-in-out duration-700" src="assets/itens/aneis/anel1.png" alt="">
@@ -220,7 +262,7 @@
                                 <p class="line-through">R$ 14.000</p>
                             </div>
                             <div>
-                                <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4">
+                                <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4 btnCompra">
                                     <p>COMPRE JÁ</p>
                                 </button>
                             </div>
@@ -242,7 +284,7 @@
                                 <p class="line-through">R$ 16.000</p>
                             </div>
                             <div>
-                                <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4">
+                                <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4 btnCompra">
                                     <p>COMPRE JÁ</p>
                                 </button>
                             </div>
@@ -264,7 +306,7 @@
                                 <p class="line-through">R$ 13.750</p>
                             </div>
                             <div>
-                                <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4">
+                                <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4 btnCompra">
                                     <p>COMPRE JÁ</p>
                                 </button>
                             </div>
@@ -286,7 +328,7 @@
                                 <p class="line-through">R$ 18.000</p>
                             </div>
                             <div>
-                                <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4">
+                                <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4 btnCompra">
                                     <p>COMPRE JÁ</p>
                                 </button>
                             </div>
@@ -309,7 +351,7 @@
                                 <p class="line-through">R$ 49.000</p>
                             </div>
                             <div>
-                                <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4">
+                                <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4 btnCompra">
                                     <p>COMPRE JÁ</p>
                                 </button>
                             </div>
@@ -331,7 +373,7 @@
                                 <p class="line-through">R$ 21.000</p>
                             </div>
                             <div>
-                                <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4">
+                                <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4 btnCompra">
                                     <p>COMPRE JÁ</p>
                                 </button>
                             </div>
@@ -353,7 +395,7 @@
                                 <p class="line-through">R$ 27.500</p>
                             </div>
                             <div>
-                                <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4">
+                                <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4 btnCompra">
                                     <p>COMPRE JÁ</p>
                                 </button>
                             </div>
@@ -375,7 +417,7 @@
                                 <p class="line-through">R$ 16.500</p>
                             </div>
                             <div>
-                                <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4">
+                                <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4 btnCompra">
                                     <p>COMPRE JÁ</p>
                                 </button>
                             </div>
@@ -396,7 +438,7 @@
     
         <div class="grid lg:grid-cols-2">
             <div class="flex justify-center items-center max-w-[80%] overflow-hidden lg:max-w-[100%] mx-auto relative">
-                <button id="btnLeft" class="bg-black text-white w-10 h-10 rounded-full hover:bg-black/80 transition ease-in-out duration-300 absolute left-0 z-50"><i class="bi bi-chevron-left text-white"></i></button>
+                <button id="btnLeft" class="bg-black text-white w-10 h-10 rounded-full hover:bg-black/80 transition ease-in-out duration-300 absolute left-0 z-50 transform translate-x-2 lg:translate-x-4"><i class="bi bi-chevron-left text-white relative"></i></button>
                 <div class="carousel-container w-full overflow-hidden relative">
                     <div class="carousel flex">
                         <img class="carousel-item flex-shrink-0 w-full object-contain active" src="assets/itens/presentes/anel-presente.png" alt="Anel Luce Eterna">
@@ -404,8 +446,31 @@
                         <img class="carousel-item flex-shrink-0 w-full object-contain" src="assets/itens/presentes/Brinco-Life-Petit-Coracao-Prata-Cravejado-90530_1_set-removebg-preview.png" alt="Brinco Petit Coração">
                     </div>
                 </div>
-                <button id="btnRight" class="bg-black text-white w-10 h-10 rounded-full hover:bg-black/80 transition ease-in-out duration-300 absolute right-0 z-50"><i class="bi bi-chevron-right text-white"></i></button>
+                <button id="btnRight" class="bg-black text-white w-10 h-10 rounded-full hover:bg-black/80 transition ease-in-out duration-300 absolute right-0 z-50 transform -translate-x-2 lg:-translate-x-4"><i class="bi bi-chevron-right text-white relative z-[9999]"></i></button>
             </div>
+
+            <style>
+                #btnRight::before, #btnRight::after, #btnLeft::before, #btnLeft::after {
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: 0;
+                    top: 0;
+                    background-color: #121212;
+                    z-index: -1;
+                    border-radius: 100%;
+                    opacity: 1;
+                    animation: scalePulse 0.7s ease-in-out infinite;
+                }
+
+                @keyframes scalePulse {
+                    100%{
+                        transform: scale(1.6);
+                        opacity: 0;
+                    }
+                }
+            </style>
     
             <div class="flex flex-col px-3 pt-14 lg:pt-0">
                 <div class="bg-black w-[50%] lg:w-[20%] text-center rounded-full">
@@ -570,7 +635,7 @@
     </div>
 
     <!-- Bônus -->
-    <div>
+    <div id="sobrenos">
         <div class="grid lg:grid-cols-2">
             <div class="bg-black text-white lg:p-10 w-[100%] text-center lg:text-start pt-7">
                 <p class="text-2xl lg:text-3xl font-semibold px-2 lg:px-0">SEU LUXO, SEU RETORNO - ESSENZA IMPERIALE</p>
@@ -589,7 +654,7 @@
         </div>
     </div>
 
-    <div id="lancamentos" class="bg-gray-800 pb-14">
+    <div id="lancamentos" class="bg-[#121212] pb-14">
         <div class="pt-12 pb-7 text-center lg:px-10 flex flex-col items-center lg:items-start">
             <h2 class="text-white text-3xl lg:text-4xl font-bold text-center lg:text-start">LANÇAMENTOS</h2>
             <span class="block bg-white w-[100px] h-0.5 translate-y-1"></span>
@@ -671,14 +736,14 @@
                     card.img.src = card.srcHover;
                     card.img.classList.add('scale-110');
                     card.shadow.classList.remove('hidden');
-                    card.divInfo.classList.remove('hidden');  // Mostrar a div com a descrição
+                    card.divInfo.classList.remove('hidden'); 
                   });
               
                   card.lanc.addEventListener('mouseout', () => {
                     card.img.src = card.srcDefault;
                     card.img.classList.remove('scale-110');
                     card.shadow.classList.add('hidden');
-                    card.divInfo.classList.add('hidden');  // Esconder a div com a descrição
+                    card.divInfo.classList.add('hidden');  
                   });
                 });
               </script>
@@ -702,14 +767,140 @@
             </p>
         </div>
     </div>
-    <footer class="bg-gray-200">
+    <footer id="rodape" class="bg-gray-200">
         <div class="pt-20 text-center pb-10">
             <span class="span-logo text-5xl lg:text-6xl">Essenza Imperiale</span>
             <p class="px-10 lg:px-64 pt-5">Na Essenza Imperiale, acreditamos que cada joia carrega uma história. Criamos peças únicas para eternizar momentos, refletir elegância e valorizar a essência de quem as usa.</p>
+            <p class="pt-5">(11) 8888-8888</p>
+            <p class="pt-5">Rua Fulano de Tal, 527 - São Paulo</p>
             <span class="block bg-black w-[90%] mx-auto h-[1px] mt-5"></span>
-            <p class="pt-10">Desenvolvido por <span class="font-bold">Kauan Cristian</span> - Front-end</p>
+            <p class="text-sm sm:text-lg pt-10 pb-2">Desenvolvido por <span class="font-bold">Kauan Cristian</span> - Front-end</p>
             <a href="https://github.com/kauancristian"><i class="bi bi-github text-xl pt-5 cursor-pointer"></i></a>
         </div>
     </footer>
+
+    <img src="" alt="">
+
+    <script>
+
+        const produtos = [
+            {
+                imagem: 'assets/itens/aneis/anel1.png',
+                nome:'Bvlgari - Anel B.Zero1',
+                categoria: 'Anel',
+                legenda: 'Audacioso, perfeito pra quem quer algo exclusivo e com estilo arquitetônico.',
+                preco: 'R$ 12.000',
+                precoReal: 'R$ 14.000',
+            },
+
+            {
+                imagem: 'assets/itens/colares/colar-coração-dourado.png',
+                nome:'Chopard - Colar Happy Hearts',
+                categoria: 'Colar',
+                legenda: 'Romântico e luxuoso ao mesmo tempo. Os diamantes dançam, literalmente.',
+                preco: 'R$ 13.000',
+                precoReal: 'R$ 16.000',
+            },
+
+            {
+                imagem: 'assets/itens/aneis/anel-dourado.png',
+                nome:'Cartier - Anel Love',
+                categoria: 'Anel',
+                legenda: 'Ícone de elegância atemporal, para quem quer marcar presença com classe.',
+                preco: 'R$ 11.400',
+                precoReal: 'R$ 13.750',
+            },
+
+            {
+                imagem: 'assets/itens/colares/colar-prata.png',
+                nome:'Cartier - Colar Juste un Clou',
+                categoria: 'Colar',
+                legenda: 'Um prego virou joia — ousado, moderno e absurdamente elegante.',
+                preco: 'R$ 13.500',
+                precoReal: 'R$ 18.000',
+            },
+
+             {
+                imagem: 'assets/itens/pulseiras/pulseira.png',
+                nome:'Bvlgari – Pulseira Serpenti Viper',
+                categoria: 'Pulseira',
+                legenda: 'Envolve o pulso como uma serpente — design sofisticado e poderoso.',
+                preco: 'R$ 42.500',
+                precoReal: 'R$ 49.000',
+            },
+
+            {
+                imagem: 'assets/itens/brincos/brinco-diamante.png',
+                nome:'Cartier - Brinco Clash de Cartier',
+                categoria: 'Brinco',
+                legenda: 'Combina atitude e elegância — design com spikes, mas ultra fino.',
+                preco: 'R$ 18.000',
+                precoReal: 'R$ 21.000',
+            },
+
+            {
+                imagem: 'assets/itens/colares/colar-esmeralda.png',
+                nome:'Bvlgari - Colar Divas’ Dream',
+                categoria: 'Colar',
+                legenda: 'Inspirado nos mosaicos romanos — um luxo clássico com um toque de arte.',
+                preco: 'R$ 18.000',
+                precoReal: 'R$ 27.500',
+            },
+
+            {
+                imagem: 'assets/itens/aneis/anel-diamante.png',
+                nome:'Chopard - Anel Happy Diamonds Icons',
+                categoria: 'Anel',
+                legenda: ' Puro glamour, os diamantes se movem dentro do anel.',
+                preco: 'R$ 15.000',
+                precoReal: 'R$ 16.500',
+            },
+        ];
+
+        const btnCompra = document.querySelectorAll('.btnCompra');
+        const spanContador = document.getElementById('spanContador');
+        const contadorItens = document.getElementById('contadorItens');
+        const itensAdicionados = document.getElementById('itensAdicionados');
+
+        // forEach para percorrer cada button
+        btnCompra.forEach((btn, index) => {
+            btn.onclick = () => {
+                spanContador.style.display = 'block';
+
+                let count = parseInt(contadorItens.innerText || '0');
+                contadorItens.innerText = count + 1;
+
+                // Pega o produto correspondente com base na ordem do botão
+                const produto = produtos[index];
+
+                itensAdicionados.innerHTML += `
+                    <div class="border border-gray-700 w-full rounded-md mt-5 p-4">
+                        <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+                            <div class="shrink-0">
+                                <img class="w-28 sm:w-32" src="${produto.imagem}" alt="${produto.nome}">
+                            </div>
+
+                            <div class="flex-1 text-center sm:text-left space-y-2">
+                                <p class="font-medium">${produto.nome}</p>
+                                <p class="text-sm text-gray-400">${produto.categoria}</p>
+
+                                <div class="flex justify-center sm:justify-start items-center gap-2 mt-2">
+                                    <i class="bi bi-dash-lg border border-gray-700 rounded-md py-1 px-2 cursor-pointer hover:bg-gray-800"></i>
+                                    <span class="itenContador border border-gray-700 rounded-md py-2 px-4">1</span>
+                                    <i class="bi bi-plus-lg border border-gray-700 rounded-md py-1 px-2 cursor-pointer hover:bg-gray-800"></i>
+                                </div>
+                            </div>
+
+                            <div class="text-center sm:text-right">
+                                <p class="text-xl font-semibold">${produto.preco}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            };
+        });
+
+    </script>
+    
 </body>
 </html>

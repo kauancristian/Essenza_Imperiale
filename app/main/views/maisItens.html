@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <title>Essenza Imperiale | Nossos Produtos</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+                
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body, html {
+            overflow-x: hidden;
+            height: 100%;
+            scroll-behavior: smooth;
+        }
+
+        p, li, h2, option, select {
+            font-family: "Montserrat", sans-serif;
+        }
+
+        h1, .span-logo {
+            font-family: "Monsieur La Doulaise", cursive;
+        }
+
+
+    </style>
+
+</head>
+<body>
+    <header class="fixed w-full h-[65px] bg-black/90 z-[9999] lg:flex items-center justify-between">
+
+        <!-- MenuButtomMobile -->
+        <div class="flex justify-end md:hidden">
+            <i id="btnMenu" class="bi bi-list absolute text-white cursor-pointer text-2xl p-4"></i>
+        </div>
+
+        <span id="spanEsp" class="text-gray-100 text-2xl lg:text-4xl translate-x-7 lg:translate-x-16 translate-y-4 lg:translate-y-0 absolute lg:relative span-logo hover:text-white hover:drop-shadow-[0_0_10px_white] hover:translate-y-[-3px] transition ease-in-out duration-300 cursor-pointer"><a href="../index.html">Essenza Imperiale</a></span>
+
+        <!-- DivMenu -->
+        <div id="DivMenu" class="flex lg:justify-end hidden translate-x-[-70%] lg:translate-x-0 transition ease-in-out duration-250">
+            <!-- Navegação -->
+            <nav class="lg:block bg-black/90 p-5 lg:p-0 space-x-3 lg:bg-transparent w-[70%] lg:w-[100%] h-screen lg:h-full z-[9999] relative">
+            
+                <!-- ButtomFechamento -->
+                <div class="flex justify-end lg:hidden">
+                    <i id="BtnFechar" class="bi bi-x-lg text-white absolute cursor-pointer"></i>
+                </div>
+
+                <h2 class="lg:hidden pb-5">
+                    <span class="span-logo text-white p-2 text-xl">Essenza Imperiale</span>
+                </h2>
+
+                <ul class="lg:flex text-white text-sm lg:space-x-5 transform lg:translate-x-[-50px] space-y-5 lg:space-y-0 text-xl lg:text-sm">
+                    <li><a href="#sec1" class="hover:text-gray-200 transition ease-in-out duration-300 cursor-pointer nav-bar">Início</a></li>
+                    <li><a href="#maisvendidos" class="hover:text-gray-200 transition ease-in-out duration-300 cursor-pointer nav-bar">Mais Vendidos</a></li>
+                    <li><a href="#presentear" class="hover:text-gray-200 transition ease-in-out duration-300 cursor-pointer nav-bar">Para Presentear</a></li>
+                    <li><a href="#lancamentos" class="hover:text-gray-200 transition ease-in-out duration-300 cursor-pointer nav-bar">Lançamentos</a></li>
+                    <li><a href="#" class="hover:text-gray-200 transition ease-in-out duration-300 cursor-pointer nav-bar">Sobre</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="secListagem" class="bg-[#121212] pt-32 pb-10">
+        <p class="font-bold text-center text-white text-4xl">LISTAGEM DE PRODUTOS</p>
+
+        <div class="bg-[#333333]/80 w-[90%] lg:w-[85%] mx-auto py-3 rounded-md mt-10 pb-7">
+            <div class="px-6 flex flex-col lg:flex-row mx-auto justify-between pt-3 space-y-4 lg:space-y-0">
+                
+                <div class="flex flex-col text-gray-100 text-sm space-y-2">
+                    <p>Buscar</p>
+                    <input class="bg-[#121212] p-1.5 text-lg indent-1 font-light rounded-md outline-none focus:outline-white focus:translate-y-[-2px] transition ease-in-out duration-300 focus:drop-shadow-[0_0_3px_white] pr-24" type="text" placeholder="Nome do Produto..." id="inptSearch" onkeyup="filtrarProdutos()">
+                </div>
+
+                <div class="flex flex-col text-gray-100 text-sm space-y-2">
+                    <p>Categoria</p>
+                    <select class="bg-[#121212] p-1.5 text-lg font-light rounded-md outline-none focus:outline-white focus:translate-y-[-2px] focus:drop-shadow-[0_0_3px_white] transition ease-in-out duration-300 lg:translate-y-0.5 pr-24 indent-0.5" name="Todas as Categorias" id="">
+                        <option class="text-sm" value="" disabled selected>Selecione uma categoria</option>
+                        <option class="text-sm" value="">Anéis</option>
+                        <option class="text-sm" value="">Pulseiras</option>
+                        <option class="text-sm" value="">Colares</option>
+                        <option class="text-sm" value="">Brincos</option>
+                    </select>
+                </div>
+
+                <div class="flex flex-col text-gray-100 text-sm space-y-2">
+                    <p>Nossos Preços</p>
+                    <select class="bg-[#121212] p-1.5 text-lg font-light rounded-md outline-none focus:outline-white focus:translate-y-[-2px] focus:drop-shadow-[0_0_3px_white] transition ease-in-out duration-300 lg:translate-y-0.5 pr-16 indent-0.5" name="" id="">
+                        <option class="text-sm" value="" disabled selected>Filtrar por Preço</option>
+                        <option class="text-sm" value="">Até R$ 10,000</option>
+                        <option class="text-sm" value="">Até R$ 20,000</option>
+                        <option class="text-sm" value="">Até R$ 30,000</option>
+                        <option class="text-sm" value="">Até R$ 40,000</option>
+                        <option class="text-sm" value="">Até R$ 50,000</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="produtosContainer" class="grid lg:grid-cols-4 pt-10 gap-12 lg:gap-4"></div>
+
+        <div class="flex justify-center items-center space-x-5">
+            <a href="#secListagem"><button id="btnAnterior" class="bg-[#2C2C2C]/40 text-gray-600 rounded-md cursor-pointer transition ease-in-out duration-300 py-2 px-4 proibido">Anterior</button></a>
+            <div class="text-white flex">
+                <p class="text-white">Página 
+                    <span id="contadorSpanInit">
+                        <p class="pr-1"></p>
+                    </span>
+                </p>
+                <p>
+                    <span id="contadorSpanFinal">
+                        <p></p>
+                    </span>
+                </p>
+            </div>
+            <a href="#secListagem"><button id="btnProximo" class="bg-[#2C2C2C] text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-300 py-2 px-4">Próxima</button></a>
+        </div>
+    </div>
+
+    <footer class="bg-gray-200">
+        <div class="pt-20 text-center pb-10">
+            <span class="span-logo text-5xl lg:text-6xl">Essenza Imperiale</span>
+            <p class="px-10 lg:px-64 pt-5">Na Essenza Imperiale, acreditamos que cada joia carrega uma história. Criamos peças únicas para eternizar momentos, refletir elegância e valorizar a essência de quem as usa.</p>
+            <p class="pt-5">(11) 8888-8888</p>
+            <p class="pt-5">Rua Fulano de Tal, 527 - São Paulo</p>
+            <span class="block bg-black w-[90%] mx-auto h-[1px] mt-5"></span>
+            <p class="pt-10">&copy; 2025 Essenza Imperiale. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        const btnMenu = document.getElementById('btnMenu');
+        const Menu = document.getElementById('DivMenu');
+        const BtnFechar = document.getElementById('BtnFechar');
+    
+        btnMenu.onclick = () => {
+            if (window.matchMedia("(max-width: 768px)").matches) {
+                Menu.style.display = 'block';
+    
+                setTimeout(() => {
+                    Menu.style.transform = 'translateX(0%)';
+                }, 100);
+            }
+        };
+    
+        BtnFechar.onclick = () => {
+            if (window.matchMedia("(max-width: 768px)").matches) {
+                Menu.style.transform = 'translateX(-100%)';
+    
+                setTimeout(() => {
+                    Menu.style.display = 'none';
+                }, 500);
+            }
+        };
+    
+        // Correção extra: se mudar para tela grande, sempre esconde o menu mobile
+        const mediaQuery = window.matchMedia("(min-width: 769px)");
+        mediaQuery.addEventListener("change", (e) => {
+            if (e.matches) {
+                Menu.style.display = 'none';
+                Menu.style.transform = 'translateX(-70%)'; // Valor original da tela grande
+            }
+        });
+    </script>
+
+    <!-- JSON - PARA EXIBIÇÂO E FILTRAGEM DE PRODUTOS -->
+    <script>
+        const produtos = [
+            {
+                imagem: '../assets/itens/aneis/anel1.png',
+                nome:'Bvlgari - Anel B.Zero1',
+                legenda: 'Audacioso, perfeito pra quem quer algo exclusivo e com estilo arquitetônico.',
+                preco: 'R$ 12.000',
+                precoReal: 'R$ 14.000',
+            },
+
+            {
+                imagem: '../assets/itens/colares/colar-coração-dourado.png',
+                nome:'Chopard - Colar Happy Hearts',
+                legenda: 'Romântico e luxuoso ao mesmo tempo. Os diamantes dançam, literalmente.',
+                preco: 'R$ 13.000',
+                precoReal: 'R$ 16.000',
+            },
+
+            {
+                imagem: '../assets/itens/aneis/anel-dourado.png',
+                nome:'Cartier - Anel Love',
+                legenda: 'Ícone de elegância atemporal, para quem quer marcar presença com classe.',
+                preco: 'R$ 11.400',
+                precoReal: 'R$ 13.750',
+            },
+
+            {
+                imagem: '../assets/itens/colares/colar-prata.png',
+                nome:'Cartier - Colar Juste un Clou',
+                legenda: 'Um prego virou joia — ousado, moderno e absurdamente elegante.',
+                preco: 'R$ 13.500',
+                precoReal: 'R$ 18.000',
+            },
+
+             {
+                imagem: '../assets/itens/pulseiras/pulseira.png',
+                nome:'Bvlgari – Pulseira Serpenti Viper',
+                legenda: 'Envolve o pulso como uma serpente — design sofisticado e poderoso.',
+                preco: 'R$ 42.500',
+                precoReal: 'R$ 49.000',
+            },
+
+            {
+                imagem: '../assets/itens/brincos/brinco-diamante.png',
+                nome:'Cartier - Brinco Clash de Cartier',
+                legenda: 'Combina atitude e elegância — design com spikes, mas ultra fino.',
+                preco: 'R$ 18.000',
+                precoReal: 'R$ 21.000',
+            },
+
+            {
+                imagem: '../assets/itens/colares/colar-esmeralda.png',
+                nome:'Bvlgari - Colar Divas’ Dream',
+                legenda: 'Inspirado nos mosaicos romanos — um luxo clássico com um toque de arte.',
+                preco: 'R$ 18.000',
+                precoReal: 'R$ 27.500',
+            },
+
+            {
+                imagem: '../assets/itens/aneis/anel-diamante.png',
+                nome:'Chopard - Anel Happy Diamonds Icons',
+                legenda: ' Puro glamour, os diamantes se movem dentro do anel.',
+                preco: 'R$ 15.000',
+                precoReal: 'R$ 16.500',
+            },
+        ];
+
+        function exibirProdutos (lista) {
+            const container = document.getElementById('produtosContainer');
+            container.innerHTML = '';
+
+            lista.forEach(produto => {
+                container.innerHTML += 
+                `
+                <div class="bg-gray-100 rounded-lg overflow-hidden w-[90%] lg:w-72 mx-auto mb-10 colar">
+                    <div class="bg-gray-300 shadow-md group flex justify-center">
+                        <img class="object-contain group-hover:scale-110 transition ease-in-out duration-700" src="${produto.imagem}" alt="${produto.imagem}">
+                    </div>
+                    <div class="p-4">
+                        <div>
+                            <p class="font-semibold text-gray-800">${produto.nome}</p>
+                            <p class="pt-3">${produto.legenda}</p>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-xl font-bold pt-3">${produto.preco}</p>
+                                <p class="line-through">${produto.precoReal}</p>
+                            </div>
+                            <div>
+                                <button class="bg-gray-900 text-white rounded-md cursor-pointer hover:bg-gray-600 transition ease-in-out duration-700 py-2 px-4">
+                                    <p>COMPRE JÁ</p>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `
+            });
+        };
+
+        function filtrarProdutos () {
+            const termo = document.getElementById('inptSearch').value.toLowerCase();
+            const filtrados = produtos.filter(p => p.nome.toLowerCase().includes(termo));
+
+            exibirProdutos(filtrados);
+        }
+
+        exibirProdutos(produtos);
+
+    </script>
+    
+    <!-- CONTADOR DE PÀGINAS -->
+    <script>
+        const contadorSpanInit = document.getElementById('contadorSpanInit');
+        let contadorInit = 1;
+
+        const contadorSpanFinal = document.getElementById('contadorSpanFinal');
+        let contadorFinal = 5;
+
+        contadorSpanInit.innerHTML = contadorInit + ' de ';
+        contadorSpanFinal.innerHTML = contadorFinal;
+
+
+        const btnAnterior = document.getElementById('btnAnterior');
+        const btnProximo = document.getElementById('btnProximo');
+        
+
+        btnProximo.onclick = () => {
+            if(contadorInit < contadorFinal) {
+                contadorInit++;
+                console.log(contadorInit);
+                contadorSpanInit.innerHTML = contadorInit + ' de';
+            };
+
+            if(contadorInit > 1) {
+                btnAnterior.classList.add('bg-[#2C2C2C]');
+                btnAnterior.classList.add('text-white');
+            };
+
+            if(contadorInit === contadorFinal) {
+                btnProximo.classList.add('bg-[#2C2C2C]/40');
+                btnProximo.classList.add('text-gray-600');
+                btnProximo.style.cursor = 'not-allowed'
+            };
+        };
+
+            
+
+        btnAnterior.onclick = () => {
+            if(contadorInit > 1) {
+                contadorInit--;
+                console.log(contadorInit);
+                contadorSpanInit.innerHTML = contadorInit + ' de'
+            }
+        }   
+    </script>
+
+    <!--  -->
+    <script>
+
+    </script>
+</body>
+</html>
